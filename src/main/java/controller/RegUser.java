@@ -20,6 +20,7 @@ public class RegUser extends HttpServlet {
         req.setCharacterEncoding("utf-8");
         String username = req.getParameter("username");
         String password = req.getParameter("password");
+        String vpassword = req.getParameter("vpassword");
         //封装user
         User user=new User();
         user.setId(username);
@@ -30,12 +31,18 @@ public class RegUser extends HttpServlet {
         //查询用户名是否唯一（能否注册）
             //唯一存储
             //不唯一提示
-        User searcheduser = userDAO.FindUser(username);
-        if(searcheduser==null){ //唯一
-            userDAO.SaveUser(user);
-        }else {//不唯一
-            req.setAttribute("warning","用户名不唯一");
+
+        if(!password.equals(vpassword)){//二次密码不一致
+            req.setAttribute("warning","两次密码不一致!");
             req.getRequestDispatcher("").forward(req,resp);
+        }else {
+            User searcheduser = userDAO.FindUser(username);
+            if(searcheduser==null){ //唯一
+                userDAO.SaveUser(user);
+            }else {//不唯一
+                req.setAttribute("warning","用户名不唯一");
+                req.getRequestDispatcher("").forward(req,resp);
+            }
         }
     }
 }
