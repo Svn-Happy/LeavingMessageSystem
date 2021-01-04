@@ -1,5 +1,8 @@
 package controller;
 
+import model.UserDAO;
+import pojo.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,5 +20,14 @@ public class LoginUser extends HttpServlet {
         //检查用户的密码是否正确
             //正确进入留言界面
             //不正确进行提示
+        req.setCharacterEncoding("utf-8");
+        String uesrname = req.getParameter("uesrname");
+        String password = req.getParameter("password");
+
+        UserDAO userDAO=new UserDAO();
+
+        User user = userDAO.FindUser(uesrname);
+
+
     }
 }
