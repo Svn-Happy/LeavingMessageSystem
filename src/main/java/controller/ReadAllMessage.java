@@ -15,6 +15,7 @@ public class ReadAllMessage extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //创建DAO
         UserDAO user = new UserDAO();
+        user.FindPaasword("");
         //查询用户的所有留言
 
     }
