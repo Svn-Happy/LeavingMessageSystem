@@ -6,7 +6,7 @@ import java.util.Date;
 public class User {
     private String id;
     private String password;
-    private Message message[];
+
     //private String message[].date;//信息数组中添加日期。
 
 
@@ -26,11 +26,4 @@ public class User {
         this.password = password;
     }
 
-    public Message[] getMessage() {
-        return message;
-    }
-
-    public void setMessage(Message[] message) {
-        this.message = message;
-    }
 }

@@ -6,6 +6,8 @@ public class Message {
 
     private String message;
 
+    private Date date;
+
     public String getMessage() {
         return message;
     }
@@ -22,5 +24,4 @@ public class Message {
         this.date = date;
     }
 
-    private Date date;
 }

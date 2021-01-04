@@ -1,9 +1,12 @@
 package model;
 
+import pojo.Message;
 import pojo.User;
 import util.DBUtil;
 
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDAO {
     /*
@@ -13,12 +16,19 @@ public class UserDAO {
      */
 
 
-    //查询用户名是否存在、读取用户留言内容（加载用户所有信息）
+    ////查询用户名是否存在、读取用户留言内容（加载用户所有信息）
+    //查询用户
     public User FindUser(String id){
         User user = new User();
         Connection conn = DBUtil.getConn();
 
         return user;
+    }
+
+    //查询留言
+    public List<Message> FindMessage(String id){
+        List<Message> list=new ArrayList<>();
+        return list;
     }
 
     //存储账号
@@ -27,11 +37,6 @@ public class UserDAO {
         return reg;
     }
 
-    //查询用户的密码
-    public String FindPaasword(String id){
-        String passowrd = new String();
-        return passowrd;
-    }
 
     //存储用户留言内容
     public int SavaMessage(String id,String message){
