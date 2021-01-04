@@ -1,11 +1,16 @@
 package controller;
 
+import model.UserDAO;
+import pojo.Message;
+import pojo.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 
 @WebServlet(urlPatterns = "/save")
 public class SaveMessage extends HttpServlet {
@@ -13,10 +18,18 @@ public class SaveMessage extends HttpServlet {
     protected void service(HttpServletRequest req,
                            HttpServletResponse resp)
             throws ServletException, IOException {
+        //用户名
+        String username = req.getParameter("username");
         //接收字符转码
+        req.setCharacterEncoding("utf-8");
         //接收留言板信息
+        String text = req.getParameter("text");
+        Message message=new Message();
+        message.setMessage(text);
+        message.setDate(new Date());
         //创建DAO
+        UserDAO userDAO=new UserDAO();
         //存入数据库
-
+        userDAO.SavaMessage(username,message);
     }
 }
