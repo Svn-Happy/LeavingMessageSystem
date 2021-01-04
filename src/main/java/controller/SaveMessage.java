@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
+import java.sql.Date;
 
 @WebServlet(urlPatterns = "/save")
 public class SaveMessage extends HttpServlet {
@@ -26,7 +26,7 @@ public class SaveMessage extends HttpServlet {
         String text = req.getParameter("text");
         Message message=new Message();
         message.setMessage(text);
-        message.setDate(new Date());
+        message.setDate(new Date(new java.util.Date().getTime()));
         //创建DAO
         UserDAO userDAO=new UserDAO();
         //存入数据库
