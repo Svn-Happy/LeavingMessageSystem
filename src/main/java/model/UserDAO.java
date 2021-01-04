@@ -5,7 +5,7 @@ import pojo.User;
 public class UserDAO {
     /*
         数据库名messagesystem
-        表名：user  属性： id 、 password
+        表名：user  属性： id 、 password test
         表名：message 属性：num(主键、序号) 、  id（外键） 、 message 、 date
      */
 
