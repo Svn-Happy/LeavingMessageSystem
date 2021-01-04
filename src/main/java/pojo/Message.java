@@ -24,4 +24,6 @@ public class Message {
         this.date = date;
     }
 
+
+
 }
