@@ -21,6 +21,8 @@ public class RegUser extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String vpassword = req.getParameter("vpassword");
+        String uservcode=req.getParameter("uservcode");
+        String vcode=req.getParameter("vcode");
         //封装user
         User user=new User();
         user.setId(username);
@@ -32,16 +34,36 @@ public class RegUser extends HttpServlet {
             //唯一存储
             //不唯一提示
 
-        if(!password.equals(vpassword)){//二次密码不一致
-            req.setAttribute("warning","两次密码不一致!");
+        if(uservcode.equals("")){//验证码空
+            req.setAttribute("warning","请填写验证码!");
             req.getRequestDispatcher("register.jsp").forward(req,resp);
-        }else {
-            User searcheduser = userDAO.FindUser(username);
-            if(searcheduser==null){ //唯一
-                userDAO.SaveUser(user);
-                req.getRequestDispatcher("index.jsp").forward(req,resp);
-            }else {//不唯一
-                req.setAttribute("warning","用户名不唯一");
+        } else{//验证码不空
+            if(vcode==uservcode){//验证码一致
+                if(!password.equals("")){//密码非空
+                    if(!password.equals(vpassword)){//二次密码不一致
+                        req.setAttribute("warning","两次密码不一致!");
+                        req.getRequestDispatcher("register.jsp").forward(req,resp);
+                    }else {
+                        if(!user.equals("")){//用户名非空
+                            User searcheduser = userDAO.FindUser(username);
+                            if(searcheduser==null){ //唯一
+                                userDAO.SaveUser(user);
+                                req.getRequestDispatcher("index.jsp").forward(req,resp);
+                            }else {//不唯一
+                                req.setAttribute("warning","用户名已被占用");
+                                req.getRequestDispatcher("register.jsp").forward(req,resp);
+                            }
+                        }else {//用户名空
+                            req.setAttribute("warning","用户名非法!");
+                            req.getRequestDispatcher("register.jsp").forward(req,resp);
+                        }
+                    }
+                }else {//密码空
+                    req.setAttribute("warning","密码不能为空!");
+                    req.getRequestDispatcher("register.jsp").forward(req,resp);
+                }
+            }else {//验证码不一致
+                req.setAttribute("warning","验证码错误!");
                 req.getRequestDispatcher("register.jsp").forward(req,resp);
             }
         }
