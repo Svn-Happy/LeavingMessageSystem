@@ -28,14 +28,14 @@ public class LoginUser extends HttpServlet {
 
         User user = userDAO.FindUser(username);
         if(user==null){//不存在
-            req.setAttribute("warning","用户不存在!");
-            req.getRequestDispatcher("").forward(req,resp);
+            req.setAttribute("msg","User not Found！");
+            req.getRequestDispatcher("index.jsp").forward(req,resp);
         }else{//存在
             if(user.getPassword().equals(password)){//密码正确
-                req.getRequestDispatcher("").forward(req,resp);
+                req.getRequestDispatcher("leavingMessage.jsp").forward(req,resp);
             }else {//密码错误
-                req.setAttribute("warning","密码错误!");
-                req.getRequestDispatcher("").forward(req,resp);
+                req.setAttribute("error","Wrong Password");
+                req.getRequestDispatcher("index.jsp").forward(req,resp);
             }
         }
 

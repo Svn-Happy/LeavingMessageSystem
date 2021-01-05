@@ -33,9 +33,10 @@ public class RegUser extends HttpServlet {
         User searcheduser = userDAO.FindUser(username);
         if(searcheduser==null){ //唯一
             userDAO.SaveUser(user);
+            req.getRequestDispatcher("index.jsp").forward(req,resp);
         }else {//不唯一
             req.setAttribute("warning","用户名不唯一");
-            req.getRequestDispatcher("").forward(req,resp);
+            req.getRequestDispatcher("register.jsp").forward(req,resp);
         }
     }
 }

@@ -24,8 +24,11 @@ public class UserDAO {
     //查询用户
     public User FindUser(String id){
         User user = null;
+        System.out.println("1");
         Connection conn = DBUtil.getConn();
-        String sql = "select *  from user where id = ?";
+        System.out.println("2");
+        String sql = "select * from user where id = ?";
+        System.out.println("3");
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1,id);
@@ -42,6 +45,7 @@ public class UserDAO {
         }finally {
             DBUtil.closeConn(conn);
         }
+        System.out.println(user);
         return user;
     }
 
