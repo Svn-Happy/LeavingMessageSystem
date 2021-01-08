@@ -20,7 +20,6 @@ public class UserDAO {
      */
 
 
-    ////查询用户名是否存在、读取用户留言内容（加载用户所有信息）
     //查询用户
     public User FindUser(String id){
         User user = null;
@@ -33,12 +32,10 @@ public class UserDAO {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1,id);
             ResultSet rs = ps.executeQuery();
-
             if(rs.next()){
                 user = new User();
                 user.setId(rs.getString("id"));
                 user.setPassword(rs.getString("password"));
-
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -115,4 +112,20 @@ public class UserDAO {
     }
 
     //修改用户留言内容（待定）
+    public int UpdateMessage(Message m){
+        int row = 0;
+        Connection conn = DBUtil.getConn();
+        String sql="update message set message=? where num=?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1,m.getMessage());
+            ps.setInt(2,m.getNum());
+            row=ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            DBUtil.closeConn(conn);
+        }
+        return row;
+    }
 }
