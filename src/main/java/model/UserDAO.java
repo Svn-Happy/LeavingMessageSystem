@@ -101,11 +101,12 @@ public class UserDAO {
         int row = 0;
         Connection conn = DBUtil.getConn();
 
-        String sql = "insert into user (id,password) values(?,?)";
+        String sql = "insert into user (id,password,email) values(?,?,?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1,user.getId());
             ps.setString(2,user.getPassword());
+            ps.setString(3,user.getEmail());
             row = ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

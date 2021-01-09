@@ -36,7 +36,7 @@
             var request = ajaxFunction();
 
             //2. 发送请求
-            request.open("POST", "/test", true);
+            request.open("POST", "/vcode", true);
 
             //想获取服务器传送过来的数据， 加一个状态的监听。
             request.onreadystatechange = function() {
@@ -57,7 +57,7 @@
 </head>
 <body>
 <video id="v1" autoplay loop muted>
-    <source src="../img/girl.mp4" type="video/mp4"  />
+    <source src="img/girl.mp4" type="video/mp4"  />
 </video>
 <div id="bigBox">
     <h1>Create Account</h1>
@@ -65,22 +65,22 @@
         <form action="/reg" method="post">
             <div class="inputText">
                 <span class="iconfont icon-nickname"></span>
-                <input type="text" placeholder="Username" />
+                <input type="text" name="username" placeholder="Username" />
             </div>
             <div class="inputText">
                 <span class="iconfont icon-visible"></span>
-                <input type="password" placeholder="Password" />
+                <input type="password" name="password" placeholder="Password" />
             </div>
             <div class="inputText">
                 <span class="iconfont icon-youjian"></span>
-                <input type="email" placeholder="enter your email" id="email" />
+                <input type="email" name="email" placeholder="enter your email" id="email" />
                 <div>
-                    <a onclick="javascript:post();return false" href="#" style="font-size: small;text-decoration:none;color: rgba(255, 255, 255, 0.699);margin-left: -20%;">发送验证码</a>
+                    <a onclick="javascript:post();return false" href="#" style="font-size: small;text-decoration:none;color: rgba(255,255,255,0.7);margin-left: -20%;">发送验证码</a>
                 </div>
             </div>
             <div class="inputText_code">
                 <span class="iconfont icon-nickname"></span>
-                <input type="text" placeholder="enter your code" />
+                <input type="text" name="uservcode" placeholder="enter your code" />
             </div>
             <input class="loginButton" type="submit" value="注册" />
         </form>

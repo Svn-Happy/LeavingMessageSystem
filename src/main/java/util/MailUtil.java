@@ -54,9 +54,16 @@ public class MailUtil {
         props.put("mail.smtp.host", host);
         // 需要经过授权，也就是有户名和密码的校验，这样才能通过验证（一定要有这一条）
         props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", true);
 
-        //props.setProperty("mail.smtp.port", "465");
-        //props.setProperty("mail.smtp.socketFactory.port", "465");
+        props.setProperty("mail.transport.protocol", "smtps");
+        props.setProperty("mail.smtp.auth", "true");
+        props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        //props.setProperty("mail.smtp.socketFactory.fallback", "false");
+        //props.setProperty("java.net.preferIPv4Stack", "true");
+        props.setProperty("mail.smtp.ssl.enable","true");
+        props.setProperty("mail.smtp.port", "465");
+        props.setProperty("mail.smtp.socketFactory.port", "465");
 
         // 用刚刚设置好的props对象构建一个session
         Session session = Session.getDefaultInstance(props);
