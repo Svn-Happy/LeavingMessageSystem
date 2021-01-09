@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="5f1458b6-36f4-4218-8aa5-7e3a5e39bdf3" name="LCS" url="http://chohee.top">
+        <fileTransfer rootFolder="/apache-tomcat-8.5.61/webapps" accessType="SFTP" host="47.103.38.81" port="22" sshConfigId="a26ba7a1-ed64-4705-8408-b9805a17117b" sshConfig="root@47.103.38.81:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
