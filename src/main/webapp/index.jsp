@@ -28,7 +28,7 @@
             <input class="loginButton" type="submit" value="登录" />
         </form>
         <div class="reghref">
-            <a href="register.jsp" class=" ahref" style="color:rgba(255, 255, 255, 0.699);">去注册</a>
+            <a href="register.jsp"  style="color:rgba(255, 255, 255, 0.699);text-decoration:none;">去注册</a>
         </div>
     </div>
 </body>

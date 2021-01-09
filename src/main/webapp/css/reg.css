@@ -93,7 +93,7 @@ source{
 	width: 150px;
 	height: 25px;
 	color:  rgba(255, 255, 255, 0.699);	/* 按钮字体颜色 */
-	border: 1px solid  rgba(255, 255, 255, 0.699); /* 删除按钮边框 */
+	border: 1px solid rgba(255, 255, 255, 0.699); /* 删除按钮边框 */
 	border-color: white;
 	border-radius: 20px;	/* 按钮圆角边 */
 	background-color: transparent;	/* 按钮颜色 */
