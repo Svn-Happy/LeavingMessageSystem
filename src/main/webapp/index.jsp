@@ -29,13 +29,13 @@
     <span>
         ${msg}
     </span>
-    <span>
-        ${error}
-    </span>
     <div class="form-group">
         <label for="Password">password</label>
         <input type="password" class="form-control" name="password" id="Password" placeholder="please enter password...">
     </div>
+    <span>
+        ${error}
+    </span>
     <p align="center">
         <button type="submit" class="btn btn-default" >login</button>
     </p>
