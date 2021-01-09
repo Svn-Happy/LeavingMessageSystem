@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/reg.css"/>
     <link rel="stylesheet" href="css/iconfont.css" />
     <link rel="stylesheet" href="css/youjian.css" />
+    <link rel="icon" href="star.ico" type="image/x-icon">
     <title>注册</title>
     <script>
         function ajaxFunction() {
