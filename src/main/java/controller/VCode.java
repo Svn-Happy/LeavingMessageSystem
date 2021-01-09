@@ -13,16 +13,18 @@ import java.io.IOException;
 public class VCode extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //目标邮箱
         String mail = req.getParameter("mail");
         MailUtil mailUtil=new MailUtil();
-        mailUtil.setAddress("cc5281@126.com", mail, "一个带附件的JavaMail邮件");
+        mailUtil.setAddress("cc@chohee.top", mail, "留言站注册码");
         /**
          * 设置smtp服务器以及邮箱的帐号和密码
          * 用QQ 邮箱作为发生者不好使 （原因不明）
          * 163 邮箱可以，但是必须开启  POP3/SMTP服务 和 IMAP/SMTP服务
          * 因为程序属于第三方登录，所有登录密码必须使用163的授权码
          */
-        mailUtil.send("smtp.126.com", "cc5281@126.com", "BLVJCVTCHDECUIRG");
+        //mailUtil.send("smtp.126.com", "cc5281@126.com", "BLVJCVTCHDECUIRG");
+        mailUtil.send("mail.chohee.top", "cc@chohee.top", "123123");
         int vCode = mailUtil.getVCode();
         req.setAttribute("vode",vCode);
         req.getRequestDispatcher("register.jsp").forward(req,resp);
