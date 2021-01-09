@@ -14,14 +14,13 @@
     <script src="bootstrap-3.3.7-dist/js/jquery1.4.js"></script>
 
     <style>
-        #d1{
-            margin-left: 400px;
-            margin-top: 20px;
-            border: 1px solid #cccccc;
-            width: 30%;
-
-        }
-    </style>
+    #d1{
+        margin-left: 400px;
+        margin-top: 20px;
+        border: 1px solid #cccccc;
+        width: 30%;
+    }
+</style>
 </head>
 <body>
     <div id="d1">
