@@ -8,46 +8,42 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>sign in</title>
-    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <script src="bootstrap-3.3.7-dist/js/jquery1.4.js"></script>
-
-    <style>
-    #d1{
-        margin-left: 400px;
-        margin-top: 20px;
-        border: 1px solid #cccccc;
-        width: 30%;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/reg.css"/>
+    <link rel="stylesheet" href="css/iconfont.css" />
+    <title>注册</title>
 </head>
 <body>
-    <div id="d1">
+<video id="v1" autoplay loop muted>
+    <source src="../img/girl.mp4" type="video/mp4"  />
+</video>
+<div id="bigBox">
+    <h1>Create Account</h1>
+    <div class="inputBox">
         <form action="/reg" method="post">
-            <h1 style="text-align: center">Register</h1>
-            <div class="form-group">
-                <label for="name">username</label>
-                <input type="text"  class="form-control" name="username" id="name" placeholder="please enter username..." >
+            <div class="inputText">
+                <span class="iconfont icon-nickname"></span>
+                <input type="text" placeholder="Username" />
             </div>
-            <div class="form-group">
-                <label for="Password">password</label>
-                <input type="password" class="form-control" name="password" id="Password" placeholder="please enter password...">
+            <div class="inputText">
+                <span class="iconfont icon-visible"></span>
+                <input type="password" placeholder="Password" />
             </div>
-            <div class="form-group">
-                <label for="Password2">verify password</label>
-                <input type="password" class="form-control" name="password2" id="Password2" placeholder="please enter password again...">
+            <div class="inputText">
+                <span class="iconfont icon-visible"></span>
+                <input type="email" placeholder="enter your email" />
+                <div>
+                    <a href="/save" style="font-size: small;color: rgba(255, 255, 255, 0.699);margin-left: -20%;">发送验证码</a>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="VerificationCode">verification code</label>
-                <input type="password" class="form-control" name="verificationCode" id="VerificationCode" placeholder="please enter code...">
-                <br>
-                <a href="#">send code</a>
+            <div class="inputText_code">
+                <span class="iconfont icon-visible"></span>
+                <input type="text" placeholder="enter your code" />
             </div>
-            <p align="center">
-                <button type="submit" class="btn btn-default" >sign in</button>
-            </p>
+            <input class="loginButton" type="submit" value="注册" />
         </form>
     </div>
+</div>
 </body>
 </html>
