@@ -61,6 +61,16 @@
     <div class="numofmessage">留言(0)</div>
     <!-- 下面是留言区 -->
     <div class="msgFrame">
+        <div class="content_1">
+            <img class="name" src="http://qlogo3.store.qq.com/qzone/1262283870/1262283870/100?1481718124" alt="头像">
+            <div class="mainInfo">
+                <div class="userId"><a href="#">${name}</a></div>
+                <div class="conInfo">
+                    ${m.message}
+                </div>
+                <div class="time">${m.time}</div>
+            </div>
+        </div>
       <c:forEach items="${message}" var="m">
           <div class="content_1">
               <img class="name" src="http://qlogo3.store.qq.com/qzone/1262283870/1262283870/100?1481718124" alt="头像">

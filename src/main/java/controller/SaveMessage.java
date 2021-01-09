@@ -15,9 +15,7 @@ import java.sql.Date;
 @WebServlet(urlPatterns = "/save")
 public class SaveMessage extends HttpServlet {
     @Override
-    protected void service(HttpServletRequest req,
-                           HttpServletResponse resp)
-            throws ServletException, IOException {
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //用户名
         String username = req.getParameter("username");
         //接收字符转码
