@@ -15,9 +15,11 @@ import java.util.List;
 public class ReadAllMassage extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("查询allMessage");
         UserDAO userDAO=new UserDAO();
         List<Message> messageList = userDAO.FindAllMessage();
-        req.setAttribute("list",messageList);
-        req.getRequestDispatcher("").forward(req,resp);
+        req.setAttribute("message",messageList);
+        req.setAttribute("size",messageList.size());
+        req.getRequestDispatcher("leavingMessage.jsp").forward(req,resp);
     }
 }

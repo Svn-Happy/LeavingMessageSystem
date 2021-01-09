@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/login.css"/>
-    <link rel="stylesheet" href="../css/iconfont.css" />
+    <link rel="stylesheet" href="css/login.css"/>
+    <link rel="stylesheet" href="css/iconfont.css" />
     <title>登录</title>
 </head>
 <body>
     <video id="v1" autoplay loop muted>
-        <source src="../img/girl.mp4" type="video/mp4"  />
+        <source src="img/girl.mp4" type="video/mp4"  />
     </video>
     <div id="bigBox">
         <form action="/login" method="post">
@@ -18,11 +18,11 @@
             <div class="inputBox">
                 <div class="inputText">
                     <span class="iconfont icon-nickname"></span>
-                    <input type="text" placeholder="Username" />
+                    <input type="text" name="username" placeholder="Username" />
                 </div>
                 <div class="inputText">
                     <span class="iconfont icon-visible"></span>
-                    <input type="password" placeholder="Password" />
+                    <input type="password" name="password" placeholder="Password" />
                 </div>
             </div>
             <input class="loginButton" type="submit" value="登录" />

@@ -21,7 +21,7 @@ public class ReadMessage extends HttpServlet {
         UserDAO userDAO=new UserDAO();
         List<Message> list = userDAO.FindMessage("username");
         //消息列表
-        req.setAttribute("list",list);
+        req.setAttribute("message",list);
         //消息数量
         req.setAttribute("msg_num",list.size());
         req.getRequestDispatcher("leavingMessage.jsp").forward(req,resp);

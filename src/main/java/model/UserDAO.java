@@ -83,7 +83,7 @@ public class UserDAO {
                 list = new ArrayList<>();
                 Message message = new Message();
                 message.setNum(rs.getInt("num"));
-                message.setId(rs.getInt("id"));
+                message.setId(rs.getString("id"));
                 message.setMessage(rs.getString("message"));
                 message.setDate(rs.getDate("date"));
                 list.add(message);

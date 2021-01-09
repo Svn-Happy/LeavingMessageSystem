@@ -21,7 +21,7 @@ public class ModifyMessage extends HttpServlet {
 
         //封装
         Message message=new Message();
-        message.setId(massage_id);
+        message.setNum(massage_id);
 
         UserDAO userDAO=new UserDAO();
         userDAO.UpdateMessage(message);

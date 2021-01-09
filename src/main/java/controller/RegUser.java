@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = "/reg")
@@ -23,12 +24,14 @@ public class RegUser extends HttpServlet {
         String vpassword = req.getParameter("vpassword");
         String email=req.getParameter("email");
         String uservcode=req.getParameter("uservcode");
-        String vcode=req.getParameter("vcode");
+        HttpSession session = req.getSession();
+        String vcode=(String) session.getAttribute("vocode");
 
         //封装user
         User user=new User();
         user.setId(username);
         user.setPassword(password);
+
 
         UserDAO userDAO=new UserDAO();
 

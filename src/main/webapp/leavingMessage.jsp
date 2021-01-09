@@ -13,7 +13,7 @@
     <meta charset="utf-8">
     <title>留言站</title>
     <link rel="icon" sizes="any" mask href="http://qzonestyle.gtimg.cn/qzone/v8/img/Qzone.svg">
-    <link rel="stylesheet" type="text/css" href="../css/留言.css">
+    <link rel="stylesheet" type="text/css" href="css/留言.css">
     <%--<link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">--%>
     <%--<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>--%>
     <%--<script src="bootstrap-3.3.7-dist/js/jquery1.4.js"></script>--%>
@@ -206,11 +206,11 @@
           <div class="content_1">
               <img class="name" src="http://qlogo3.store.qq.com/qzone/1262283870/1262283870/100?1481718124" alt="头像">
               <div class="mainInfo">
-                  <div class="userId"><a href="#">${name}</a></div>
+                  <div class="userId"><a href="#">${m.id}</a></div>
                   <div class="conInfo">
                      ${m.message}
                   </div>
-                  <div class="time">${m.time}</div>
+                  <div class="time">${m.date}</div>
               </div>
           </div>
       </c:forEach>
