@@ -6,6 +6,12 @@ public class Message {
 
     private int num;
 
+    private int id;
+
+    private String message;
+
+    private Date date;
+
     public int getNum() {
         return num;
     }
@@ -14,9 +20,13 @@ public class Message {
         this.num = num;
     }
 
-    private String message;
+    public int getId(){
+        return id;
+    }
 
-    private Date date;
+    public void setId(int id){
+        this.id=id;
+    }
 
     public String getMessage() {
         return message;
@@ -33,7 +43,5 @@ public class Message {
     public void setDate(Date date) {
         this.date = date;
     }
-
-
 
 }

@@ -58,6 +58,32 @@ public class UserDAO {
             while(rs.next()){
                 list = new ArrayList<>();
                 Message message = new Message();
+                message.setNum(rs.getInt("num"));
+                message.setMessage(rs.getString("message"));
+                message.setDate(rs.getDate("date"));
+                list.add(message);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            DBUtil.closeConn(conn);
+        }
+        return list;
+    }
+
+    //查询所有留言(查不到返回空)
+    public List<Message> FindAllMessage(){
+        List<Message> list = null;
+        Connection conn = DBUtil.getConn();
+        String sql = "select * from message order by date";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                list = new ArrayList<>();
+                Message message = new Message();
+                message.setNum(rs.getInt("num"));
+                message.setId(rs.getInt("id"));
                 message.setMessage(rs.getString("message"));
                 message.setDate(rs.getDate("date"));
                 list.add(message);
@@ -123,7 +149,21 @@ public class UserDAO {
             row=ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        }
+        return row;
+    }
+
+    public int DeleteMessage(int num){//消息编号
+        int row=0;
+        Connection conn= DBUtil.getConn();
+        String sql="delete message where num=?";
+        try {
+            PreparedStatement ps =conn.prepareStatement(sql);
+            ps.setInt(1,num);
+            row = ps.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
             DBUtil.closeConn(conn);
         }
         return row;
