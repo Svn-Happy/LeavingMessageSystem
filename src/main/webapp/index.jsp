@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/login.css"/>
-    <link rel="stylesheet" href="../css/iconfont.css" />
+    <link rel="stylesheet" href="css/login.css"/>
+    <link rel="stylesheet" href="css/iconfont.css" />
     <title>登录</title>
 </head>
 <body>
     <video id="v1" autoplay loop muted>
-        <source src="../img/girl.mp4" type="video/mp4"  />
+        <source src="img/girl.mp4" type="video/mp4"  />
     </video>
     <div id="bigBox">
         <form action="/login" method="post">
@@ -28,7 +28,7 @@
             <input class="loginButton" type="submit" value="登录" />
         </form>
         <div class="reghref">
-            <a href="register.jsp" class=" ahref" style="color:rgba(255, 255, 255, 0.699);">去注册</a>
+            <a href="register.jsp"  style="color:rgba(255, 255, 255, 0.699);text-decoration:none;">去注册</a>
         </div>
     </div>
 </body>

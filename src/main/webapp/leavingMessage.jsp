@@ -179,13 +179,13 @@
 <!-- 下面实现留言板功能 -->
 <div class="mainframe">
     <div class="title">留言板</div>
-    <div class="message">主人寄语</div>
-    <div class="info">
-        这是主人留下的寄语~
-    </div>
-    <div class="content" contenteditable="true"></div>
-    <input type="button" name="submit" value="发表" class="subbtn">
-    <div class="numofmessage">留言(0)</div>
+    <form action="/test" method="post">
+        <div class="content" contenteditable="true">
+            <input type="text">
+        </div>
+        <input type="submit" value="发表" class="subbtn">
+    </form>
+    <div class="numofmessage">留言(${size})</div>
     <!-- 下面是留言区 -->
     <div class="msgFrame">
         <div class="content_1">
@@ -193,7 +193,7 @@
             <div class="mainInfo">
                 <div class="userId"><a href="#">name</a></div>
                 <div class="conInfo">
-                    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                   。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。
                 </div>
                 <div class="time">时间</div>
                 <div>
