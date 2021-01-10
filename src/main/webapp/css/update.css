@@ -2,40 +2,21 @@ body
 {
 	margin: 0;
 	padding: 0;
-	background-repeat: no-repeat;	/* 背景图片不重复 */
+    background-repeat: no-repeat;	/* 背景图片不重复 */
+    backgroundd-image:url("/img/update.png");	/* 背景图片 */
+	background-size: 100%;
 }
 
-a{text-decoration:none}
-
-video{  
-	position: fixed;  
-	right: 0px;  
-	bottom: 0px;  
-	min-width: 100%;  
-	min-height: 100%;  
-	height: auto;  
-	width: auto;  
-	/*加滤镜*/
-	/*filter: blur(15px); //背景模糊设置 */
-	/*-webkit-filter: grayscale(100%);*/  
-	/*filter:grayscale(100%); //背景灰度设置*/  
-	z-index:-11
-}  
-source{  
-	min-width: 100%;  
-	min-height: 100%;  
-	height: auto;  
-	width: auto;  
-}
+a{ text-decoration:none} 
 
 #bigBox
 {
 	margin: 0 auto;	/* login框剧中 */
-	margin-top: 200px; /* login框与顶部的距离 */
+	margin-top: 100px; /* login框与顶部的距离 */
 	padding: 20px 50px;	/* login框内部的距离(内部与输入框和按钮的距离) */
 	background-color: #00000090;	/* login框背景颜色和透明度 */
 	width: 400px;
-	height: 315px;
+	height: 350px;
 	border-radius: 10px;	/* 圆角边 */
 	text-align: center;	/* 框内所有内容剧中 */
 	box-shadow: 0 0 1px 2px
@@ -66,11 +47,10 @@ source{
 	color: white;	/* icon颜色 */
 }
 
-#bigBox .inputBox .inputText input
+#bigBox .inputBox .inputText textarea
 {
-	border: 0;	/* 删除输入框边框 */
+	border: 1px solid white;	/* 删除输入框边框 */
 	padding: 10px 10px;	/* 输入框内的间距 */
-	border-bottom: 1px solid white;	/* 输入框白色下划线 */
 	background-color: #00000000;	/* 输入框透明 */
 	color: white;	/* 输入字体的颜色 */
 }
@@ -89,7 +69,7 @@ source{
 
 #bigBox .reghref
 {
-	margin-top: 4px;
+	margin-top: 5px;
 	text-align:right;
 }
 
