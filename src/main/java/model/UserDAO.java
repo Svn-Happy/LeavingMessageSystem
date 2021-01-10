@@ -74,14 +74,13 @@ public class UserDAO {
 
     //查询所有留言(查不到返回空)
     public List<Message> FindAllMessage(){
-        List<Message> list = null;
+        List<Message> list = new ArrayList<>();
         Connection conn = DBUtil.getConn();
         String sql = "select * from message order by date";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                list = new ArrayList<>();
                 Message message = new Message();
                 message.setNum(rs.getInt("num"));
                 message.setId(rs.getString("id"));
@@ -181,7 +180,7 @@ public class UserDAO {
     public int DeleteMessage(int num){//消息编号
         int row=0;
         Connection conn= DBUtil.getConn();
-        String sql="delete message where num=?";
+        String sql="delete from message where num=?";
         try {
             PreparedStatement ps =conn.prepareStatement(sql);
             ps.setInt(1,num);

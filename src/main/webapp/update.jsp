@@ -15,10 +15,11 @@
 <body style="background-image: url('img/update.png');background-size: 100%">
 <div id="bigBox">
     <h1>update</h1>
-    <form action="/update?id=${id}" method="get">
+    <form action="/modifypost" method="post">
         <div class="inputBox">
+            <label name="num">${num}</label>
             <div class="inputText">
-                <textarea rows="10" cols="20" placeholder="请输入内容">${message}</textarea>
+                <textarea rows="10" cols="20" name="text" placeholder="请输入内容">${message}</textarea>
             </div>
         </div>
         <input class="loginButton" type="submit" value="提交" />

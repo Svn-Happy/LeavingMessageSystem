@@ -17,17 +17,19 @@ public class SaveMessage extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //用户名
-        String username = req.getParameter("username");
+        String username = req.getParameter("user");
         //接收字符转码
         req.setCharacterEncoding("utf-8");
         //接收留言板信息
-        String text = req.getParameter("text");
+        String text = req.getParameter("message");
         Message message=new Message();
         message.setMessage(text);
         message.setDate(new Date(new java.util.Date().getTime()));
         //创建DAO
         UserDAO userDAO=new UserDAO();
         //存入数据库
-        userDAO.SavaMessage(username,message);
+        int st = userDAO.SavaMessage(username, message);
+        System.out.println(st);
+        resp.sendRedirect("/readall");
     }
 }

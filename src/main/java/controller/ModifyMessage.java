@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = "/modify")
@@ -17,10 +18,13 @@ public class ModifyMessage extends HttpServlet {
         String num = req.getParameter("id");
         UserDAO userDAO=new UserDAO();
         Message message = userDAO.FindMessageByNum(num);
-        req.setAttribute("id",message.getNum());
-        req.setAttribute("content",message.getMessage());
+        System.out.println("查询到的留言id:"+message.getNum());
+        //req.setAttribute("num",message.getNum());
+        req.setAttribute("message",message.getMessage());
+        HttpSession session = req.getSession();
+        session.setAttribute("num",message.getNum());
 
-        req.getRequestDispatcher("modify.jsp").forward(req,resp);
+        req.getRequestDispatcher("update.jsp").forward(req,resp);
     }
     //    @Override
 //    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

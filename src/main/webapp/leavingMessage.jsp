@@ -35,16 +35,16 @@
 
         function submit() {
             //1. 创建对象
-            alert(0);
+
             var request = ajaxFunction();
 
             //2. 发送请求
-            request.open("POST", "/test", true);
+            request.open("POST", "/save?user=${name}", true);
 
             //想获取服务器传送过来的数据， 加一个状态的监听。
             request.onreadystatechange = function() {
                 if (request.readyState == 4 && request.status == 200) {
-                    alert("验证码发送成功");
+                    alert("留言发送成功");
                 }
             }
 
@@ -55,7 +55,6 @@
             //带数据过去  ， 在send方法里面写表单数据。
             var message="message="+ document.getElementById("msg").innerHTML;
             request.send(message);
-            alert(0);
         }
         function  openwindow(str)
         {
@@ -114,20 +113,6 @@
     <div class="numofmessage">留言(${size})</div>
     <!-- 下面是留言区 -->
     <div class="msgFrame">
-        <div class="content_1">
-            <img class="name" src="http://qlogo3.store.qq.com/qzone/1262283870/1262283870/100?1481718124" alt="头像">
-            <div class="mainInfo">
-                <div class="userId"><a href="#">${m.id}</a></div>
-                <div class="conInfo">
-                    ${m.message}
-                </div>
-                <div class="time">
-                    ${m.date}&nbsp;&nbsp;&nbsp;
-                    <a href="/delete?id=${m.num}">删除留言</a>
-                    <a href="#" onclick="javascript:openwindow('http://baidu.com')">修改留言</a>
-                </div>
-            </div>
-        </div>
       <c:forEach items="${message}" var="m">
           <div class="content_1">
               <img class="name" src="http://qlogo3.store.qq.com/qzone/1262283870/1262283870/100?1481718124" alt="头像">
@@ -139,7 +124,7 @@
                   <div class="time">
                           ${m.date}&nbsp;&nbsp;&nbsp;
                               <a href="/delete?id=${m.num}">删除留言</a>
-                              <a href="#" >修改留言</a>
+                              <a href="/modify?id=${m.num}" >修改留言</a>
                   </div>
               </div>
           </div>

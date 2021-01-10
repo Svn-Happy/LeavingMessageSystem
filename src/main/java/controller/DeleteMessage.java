@@ -13,10 +13,10 @@ import java.io.IOException;
 public class DeleteMessage extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int message_id = Integer.parseInt(req.getParameter("message_id"));
+        int message_id = Integer.parseInt(req.getParameter("id"));
         UserDAO userDAO=new UserDAO();
         userDAO.DeleteMessage(message_id);
         //删除后重定向
-        resp.sendRedirect("leavingMessage.jsp");
+        resp.sendRedirect("/readall");
     }
 }

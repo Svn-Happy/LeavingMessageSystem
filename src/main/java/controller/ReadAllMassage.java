@@ -18,6 +18,9 @@ public class ReadAllMassage extends HttpServlet {
         System.out.println("查询allMessage");
         UserDAO userDAO=new UserDAO();
         List<Message> messageList = userDAO.FindAllMessage();
+//        for (Message m:messageList) {
+//            System.out.println(m.getMessage());
+//        }
         req.setAttribute("message",messageList);
         req.setAttribute("size",messageList.size());
         req.getRequestDispatcher("leavingMessage.jsp").forward(req,resp);
