@@ -22,12 +22,8 @@ public class DBUtil  {
     static {
         //创建Propertis
         Properties p = new Properties();
-
-
-
         //使用流读取配置文件
         InputStream in = DBUtil.class.getClassLoader().getResourceAsStream("jdbc.properties");//生成本地变量的快捷键。
-
         try {
             p.load(in);
             //读取配置文件的信息。
@@ -42,8 +38,6 @@ public class DBUtil  {
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }

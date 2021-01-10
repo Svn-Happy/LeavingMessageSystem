@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = "/reg")
@@ -20,13 +21,17 @@ public class RegUser extends HttpServlet {
         req.setCharacterEncoding("utf-8");
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        String vpassword = req.getParameter("vpassword");
+        //String vpassword = req.getParameter("vpassword");
+        String email=req.getParameter("email");
         String uservcode=req.getParameter("uservcode");
-        String vcode=req.getParameter("vcode");
+        HttpSession session = req.getSession();
+        String vcode=String.valueOf((int) session.getAttribute("vcode"));
+
         //封装user
         User user=new User();
         user.setId(username);
         user.setPassword(password);
+        user.setEmail(email);
 
         UserDAO userDAO=new UserDAO();
 
@@ -38,25 +43,20 @@ public class RegUser extends HttpServlet {
             req.setAttribute("warning","请填写验证码!");
             req.getRequestDispatcher("register.jsp").forward(req,resp);
         } else{//验证码不空
-            if(vcode==uservcode){//验证码一致
+            if(vcode.equals(uservcode)){//验证码一致
                 if(!password.equals("")){//密码非空
-                    if(!password.equals(vpassword)){//二次密码不一致
-                        req.setAttribute("warning","两次密码不一致!");
-                        req.getRequestDispatcher("register.jsp").forward(req,resp);
-                    }else {
-                        if(!user.equals("")){//用户名非空
-                            User searcheduser = userDAO.FindUser(username);
-                            if(searcheduser==null){ //唯一
-                                userDAO.SaveUser(user);
-                                req.getRequestDispatcher("index.jsp").forward(req,resp);
-                            }else {//不唯一
-                                req.setAttribute("warning","用户名已被占用");
-                                req.getRequestDispatcher("register.jsp").forward(req,resp);
-                            }
-                        }else {//用户名空
-                            req.setAttribute("warning","用户名非法!");
+                    if(!username.equals("")){//用户名非空
+                        User searcheduser = userDAO.FindUser(username);
+                        if(searcheduser==null){ //唯一
+                            userDAO.SaveUser(user);
+                            req.getRequestDispatcher("index.jsp").forward(req,resp);
+                        }else {//不唯一
+                            req.setAttribute("warning","用户名已被占用");
                             req.getRequestDispatcher("register.jsp").forward(req,resp);
                         }
+                    }else {//用户名空
+                        req.setAttribute("warning","用户名非法!");
+                        req.getRequestDispatcher("register.jsp").forward(req,resp);
                     }
                 }else {//密码空
                     req.setAttribute("warning","密码不能为空!");

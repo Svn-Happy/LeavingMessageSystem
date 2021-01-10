@@ -25,21 +25,26 @@ public class LoginUser extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
-
         UserDAO userDAO=new UserDAO();
 
         User user = userDAO.FindUser(username);
         if(user==null){//不存在
             req.setAttribute("warning","用户不存在!");
             req.getRequestDispatcher("index.jsp").forward(req,resp);
+            System.out.println("用户不存在!");
         }else{//存在
             if(user.getPassword().equals(password)){//密码正确
-                req.getRequestDispatcher("").forward(req,resp);//跳转留言
+                req.setAttribute("name",username);//用户名
+                req.getRequestDispatcher("/readall").forward(req,resp);//跳转
+                //req.getRequestDispatcher("leavingMessage.jsp").forward(req,resp);
+                System.out.println("密码正确");
+                System.out.println(username);
+
             }else {//密码错误
                 req.setAttribute("warning","密码错误!");
                 req.getRequestDispatcher("index.jsp").forward(req,resp);
+                System.out.println("密码错误!");
             }
         }
-
     }
 }

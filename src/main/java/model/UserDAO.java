@@ -20,28 +20,29 @@ public class UserDAO {
      */
 
 
-    ////查询用户名是否存在、读取用户留言内容（加载用户所有信息）
     //查询用户
     public User FindUser(String id){
         User user = null;
+        System.out.println("1");
         Connection conn = DBUtil.getConn();
-        String sql = "select *  from user where id = ?";
+        System.out.println("2");
+        String sql = "select * from user where id = ?";
+        System.out.println("3");
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1,id);
             ResultSet rs = ps.executeQuery();
-
             if(rs.next()){
                 user = new User();
                 user.setId(rs.getString("id"));
                 user.setPassword(rs.getString("password"));
-
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
             DBUtil.closeConn(conn);
         }
+        System.out.println(user);
         return user;
     }
 
@@ -57,6 +58,32 @@ public class UserDAO {
             while(rs.next()){
                 list = new ArrayList<>();
                 Message message = new Message();
+                message.setNum(rs.getInt("num"));
+                message.setMessage(rs.getString("message"));
+                message.setDate(rs.getDate("date"));
+                list.add(message);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            DBUtil.closeConn(conn);
+        }
+        return list;
+    }
+
+    //查询所有留言(查不到返回空)
+    public List<Message> FindAllMessage(){
+        List<Message> list = null;
+        Connection conn = DBUtil.getConn();
+        String sql = "select * from message order by date";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                list = new ArrayList<>();
+                Message message = new Message();
+                message.setNum(rs.getInt("num"));
+                message.setId(rs.getString("id"));
                 message.setMessage(rs.getString("message"));
                 message.setDate(rs.getDate("date"));
                 list.add(message);
@@ -74,11 +101,12 @@ public class UserDAO {
         int row = 0;
         Connection conn = DBUtil.getConn();
 
-        String sql = "insert into user (id,password) values(?,?)";
+        String sql = "insert into user (id,password,email) values(?,?,?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1,user.getId());
             ps.setString(2,user.getPassword());
+            ps.setString(3,user.getEmail());
             row = ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -111,4 +139,34 @@ public class UserDAO {
     }
 
     //修改用户留言内容（待定）
+    public int UpdateMessage(Message m){
+        int row = 0;
+        Connection conn = DBUtil.getConn();
+        String sql="update message set message=? where num=?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1,m.getMessage());
+            ps.setInt(2,m.getNum());
+            row=ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return row;
+    }
+
+    public int DeleteMessage(int num){//消息编号
+        int row=0;
+        Connection conn= DBUtil.getConn();
+        String sql="delete message where num=?";
+        try {
+            PreparedStatement ps =conn.prepareStatement(sql);
+            ps.setInt(1,num);
+            row = ps.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            DBUtil.closeConn(conn);
+        }
+        return row;
+    }
 }

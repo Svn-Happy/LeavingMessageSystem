@@ -8,16 +8,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
+<html lang="en" class="no-js">
 <head>
     <meta charset="utf-8">
-    <title>留言站</title>
     <link rel="icon" href="message.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="css/留言.css">
-    <%--<link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">--%>
-    <%--<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>--%>
-    <%--<script src="bootstrap-3.3.7-dist/js/jquery1.4.js"></script>--%>
-    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="bootstrap-3.3.7-dist/js/jquery-1.8.3.min.js"></script>
+    <title>留言站</title>
     <script>
         function ajaxFunction() {
             var xmlHttp;
@@ -60,8 +57,26 @@
             request.send(message);
             alert(0);
         }
-    </script>
+        function  openwindow(str)
+        {
 
+            //获取父窗口的文本信息赋值给text
+            // var text = ;
+            //打开子窗口，并且把操作句柄赋值给win变量，以下所有操作都是针对win对象的
+            var iTop = (window.screen.availHeight - 30 - 300) / 2;
+            var iLeft = (window.screen.availWidth - 10 - 400) / 2;
+            var m="menubar=no,width=400,height=300,resizeable=yes,"+"left="+iLeft/2+",top="+iTop/2;//解决位置问题
+
+            var win = window.open("http://www.runoob.com","mywin", m);
+            //输出基本信息
+            win.document.writeln("<title>输出结果</title>");
+            win.document.writeln("<><textarea rows='5' cols='51' >");
+            //输出从父窗口获取的信息
+            win.document.writeln("</textarea>");
+            win.document.close();
+            win.focus();
+        }
+    </script>
 </head>
 <body>
 <div class="header">
@@ -105,14 +120,14 @@
         <div class="content_1">
             <img class="name" src="http://qlogo3.store.qq.com/qzone/1262283870/1262283870/100?1481718124" alt="头像">
             <div class="mainInfo">
-                <div class="userId"><a href="#">name</a></div>
+                <div class="userId"><a href="#">${m.id}</a></div>
                 <div class="conInfo">
-                   。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。
+                    ${m.message}
                 </div>
                 <div class="time">
-                    时间&nbsp;&nbsp;&nbsp;
-                    <a href="#">删除留言</a>
-                    <a href="#">修改留言</a>
+                    ${m.date}&nbsp;&nbsp;&nbsp;
+                    <a href="/delete?id=${m.num}">删除留言</a>
+                    <a href="#" onclick="javascript:openwindow('http://baidu.com')">修改留言</a>
                 </div>
             </div>
         </div>
@@ -120,15 +135,32 @@
           <div class="content_1">
               <img class="name" src="http://qlogo3.store.qq.com/qzone/1262283870/1262283870/100?1481718124" alt="头像">
               <div class="mainInfo">
-                  <div class="userId"><a href="#">${name}</a></div>
+                  <div class="userId"><a href="#">${m.id}</a></div>
                   <div class="conInfo">
                      ${m.message}
                   </div>
-                  <div class="time">${m.time}</div>
+                  <div class="time">
+                          ${m.date}&nbsp;&nbsp;&nbsp;
+                              <a href="/delete?id=${m.num}">删除留言</a>
+                              <a href="#" >修改留言</a>
+                  </div>
               </div>
           </div>
       </c:forEach>
     </div>
 </div>
+<!-- classie.js by @desandro: https://github.com/desandro/classie -->
+<script src="js/classie.js"></script>
+<script src="js/modalEffects.js"></script>
+
+<!-- for the blur effect -->
+<!-- by @derSchepp https://github.com/Schepp/CSS-Filters-Polyfill -->
+<script>
+    // this is important for IEs
+    var polyfilter_scriptpath = '/js/';
+</script>
+<script src="js/cssParser.js"></script>
+<script src="js/css-filters-polyfill.js"></script>
+
 </body>
 </html>

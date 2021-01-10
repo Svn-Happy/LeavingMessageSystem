@@ -33,7 +33,7 @@ source{
 	padding: 20px 50px;	/* login框内部的距离(内部与输入框和按钮的距离) */
 	background-color: #00000090;	/* login框背景颜色和透明度 */
 	width: 400px;
-	height: 420px;
+	height: 435px;
 	border-radius: 10px;	/* 圆角边 */
     text-align: center;	/* 框内所有内容剧中 */
     box-shadow: 0 0 3px 6px

@@ -54,9 +54,16 @@ public class MailUtil {
         props.put("mail.smtp.host", host);
         // 需要经过授权，也就是有户名和密码的校验，这样才能通过验证（一定要有这一条）
         props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", true);
 
-        //props.setProperty("mail.smtp.port", "465");
-        //props.setProperty("mail.smtp.socketFactory.port", "465");
+        props.setProperty("mail.transport.protocol", "smtps");
+        props.setProperty("mail.smtp.auth", "true");
+        props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        //props.setProperty("mail.smtp.socketFactory.fallback", "false");
+        //props.setProperty("java.net.preferIPv4Stack", "true");
+        props.setProperty("mail.smtp.ssl.enable","true");
+        props.setProperty("mail.smtp.port", "465");
+        props.setProperty("mail.smtp.socketFactory.port", "465");
 
         // 用刚刚设置好的props对象构建一个session
         Session session = Session.getDefaultInstance(props);
@@ -110,29 +117,30 @@ public class MailUtil {
         }
     }
 
-    public static void main(String[] args) {
-//        MailUtil cn = new MailUtil();
-//        // 设置发件人地址、收件人地址和邮件标题
-//        cn.setAddress("cc5281@126.com", "cc5282@126.com", "一个带附件的JavaMail邮件");
-//        // 设置要发送附件的位置和标题
-//        //cn.setAffix("/mailcontent.txt", "mailcontent.txt");
-//
+//    public static void main(String[] args) {
+////        MailUtil cn = new MailUtil();
+////        // 设置发件人地址、收件人地址和邮件标题
+////        cn.setAddress("cc5281@126.com", "cc5282@126.com", "一个带附件的JavaMail邮件");
+////        // 设置要发送附件的位置和标题
+////        //cn.setAffix("/mailcontent.txt", "mailcontent.txt");
+////
+////        /**
+////         * 设置smtp服务器以及邮箱的帐号和密码
+////         * 用QQ 邮箱作为发生者不好使 （原因不明）
+////         * 163 邮箱可以，但是必须开启  POP3/SMTP服务 和 IMAP/SMTP服务
+////         * 因为程序属于第三方登录，所有登录密码必须使用163的授权码
+////         */
+////        cn.send("smtp.126.com", "cc5281@126.com", "BLVJCVTCHDECUIRG");
+//        MailUtil mailUtil=new MailUtil();
+//        //mailUtil.setAddress("cc@chohee.top", "1120923182@qq.com", "留言站注册码");
+//        mailUtil.setAddress("cc5281@126.com", "cc5282@126.com", "留言站注册码");
 //        /**
 //         * 设置smtp服务器以及邮箱的帐号和密码
 //         * 用QQ 邮箱作为发生者不好使 （原因不明）
 //         * 163 邮箱可以，但是必须开启  POP3/SMTP服务 和 IMAP/SMTP服务
 //         * 因为程序属于第三方登录，所有登录密码必须使用163的授权码
 //         */
-//        cn.send("smtp.126.com", "cc5281@126.com", "BLVJCVTCHDECUIRG");
-        MailUtil mailUtil=new MailUtil();
-        mailUtil.setAddress("cc@chohee.top", "1120923182@qq.com", "留言站注册码");
-        /**
-         * 设置smtp服务器以及邮箱的帐号和密码
-         * 用QQ 邮箱作为发生者不好使 （原因不明）
-         * 163 邮箱可以，但是必须开启  POP3/SMTP服务 和 IMAP/SMTP服务
-         * 因为程序属于第三方登录，所有登录密码必须使用163的授权码
-         */
-        mailUtil.send("smtp.126.com", "cc5281@126.com", "BLVJCVTCHDECUIRG");
-        //mailUtil.send("smtp.chohee.top", "cc@chohee.top", "123123");
-    }
+//        mailUtil.send("smtp.126.com", "cc5281@126.com", "BLVJCVTCHDECUIRG");
+//        //mailUtil.send("smtp.chohee.top", "cc@chohee.top", "123123");
+//    }
 }
