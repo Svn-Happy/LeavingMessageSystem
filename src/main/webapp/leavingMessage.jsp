@@ -79,9 +79,6 @@
     </script>
 </head>
 <body>
-<div class="header">
-    This is the head nav
-</div>
 <div class="topInfo">
     <span class="edit">编辑</span>
     <div class="zoneName">
