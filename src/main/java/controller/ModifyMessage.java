@@ -14,18 +14,30 @@ import java.io.IOException;
 public class ModifyMessage extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //消息id
-        int massage_id = Integer.parseInt(req.getParameter("massage_id"));
-        //消息内容
-        String text = req.getParameter("text");
-
-        //封装
-        Message message=new Message();
-        message.setNum(massage_id);
-
+        String num = req.getParameter("id");
         UserDAO userDAO=new UserDAO();
-        userDAO.UpdateMessage(message);
+        Message message = userDAO.FindMessageByNum(num);
+        req.setAttribute("id",message.getNum());
+        req.setAttribute("content",message.getMessage());
 
-
+        req.getRequestDispatcher("modify.jsp").forward(req,resp);
     }
+    //    @Override
+//    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        //消息id
+//        int massage_id = Integer.parseInt(req.getParameter("massage_id"));
+//        //消息内容
+//        String text = req.getParameter("text");
+//
+//        //封装
+//        Message message=new Message();
+//        message.setNum(massage_id);
+//
+//        UserDAO userDAO=new UserDAO();
+//        userDAO.UpdateMessage(message);
+//
+//        //更新后重定向
+//        resp.sendRedirect("leavingMessage.jsp");
+//
+//    }
 }

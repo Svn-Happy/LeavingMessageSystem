@@ -41,7 +41,5 @@ public class VCode extends HttpServlet {
 //        req.setAttribute("vcode",vCode);
 //
 //        req.getRequestDispatcher("register.jsp").forward(req,resp);
-
-
     }
 }

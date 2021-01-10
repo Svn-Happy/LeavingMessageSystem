@@ -54,6 +54,7 @@ public class UserDAO {
 
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1,id);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 list = new ArrayList<>();
@@ -90,10 +91,33 @@ public class UserDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             DBUtil.closeConn(conn);
         }
         return list;
+    }
+
+    //以id查询留言
+    public Message FindMessageByNum(String num){
+        Message message = null;
+        Connection conn = DBUtil.getConn();
+        String sql="select * from message where num=?";
+        try {
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.setInt(1,Integer.parseInt(num));
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                message=new Message();
+                message.setNum(rs.getInt("num"));
+                message.setMessage(rs.getString("message"));
+                message.setDate(rs.getDate("date"));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            DBUtil.closeConn(conn);
+        }
+        return message;
     }
 
     //存储账号
